@@ -1,0 +1,550 @@
+/* CSS Variables - Brittany Chiang 스타일 */
+:root {
+    --navy: #0a192f;
+    --light-navy: #112240;
+    --lightest-navy: #233554;
+    --navy-shadow: rgba(2, 12, 27, 0.7);
+    --dark-slate: #495670;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --white: #e6f1ff;
+    --green: #64ffda;
+    --green-tint: rgba(100, 255, 218, 0.1);
+    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    --fz-xxs: 12px;
+    --fz-xs: 13px;
+    --fz-sm: 14px;
+    --fz-md: 16px;
+    --fz-lg: 18px;
+    --fz-xl: 20px;
+    --fz-xxl: 22px;
+    --fz-heading: 32px;
+    --border-radius: 4px;
+    --nav-height: 100px;
+    --nav-scroll-height: 70px;
+    --tab-height: 42px;
+    --tab-width: 120px;
+    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --hamburger-width: 30px;
+    --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
+    --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ham-after-active: bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: var(--fz-md);
+    line-height: 1.3;
+    color: var(--slate);
+    background-color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 사이드 네비게이션 */
+.side-nav {
+    position: fixed;
+    left: 40px;
+    bottom: 0;
+    right: auto;
+    z-index: 10;
+    width: 40px;
+    color: var(--light-slate);
+}
+
+.side-nav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.side-nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.side-nav-list::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 90px;
+    margin: 0 auto;
+    background-color: var(--light-slate);
+}
+
+.side-nav-list li {
+    margin: 0;
+}
+
+.side-nav-list a {
+    padding: 10px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+    line-height: var(--fz-lg);
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    text-decoration: none;
+    color: var(--light-slate);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.side-nav-list a:hover,
+.side-nav-list a:focus {
+    color: var(--green);
+    transform: translateY(-3px);
+}
+
+.side-nav-list a.active {
+    color: var(--green);
+}
+
+.side-nav-list a span {
+    color: var(--green);
+    font-size: var(--fz-sm);
+    margin-bottom: 5px;
+}
+
+/* 메인 컨텐츠 */
+.main-content {
+    margin-left: 0;
+    padding: 0 150px;
+    min-height: 100vh;
+}
+
+/* 인트로 섹션 */
+.intro-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    max-width: 1000px;
+}
+
+.intro-content {
+    width: 100%;
+}
+
+.intro-greeting {
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-lg);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.intro-name {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+}
+
+.intro-title {
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: 600;
+    color: var(--slate);
+    line-height: 1.1;
+    margin: 0 0 30px 0;
+}
+
+.intro-description {
+    font-size: var(--fz-xl);
+    line-height: 1.5;
+    color: var(--slate);
+    max-width: 540px;
+    margin-bottom: 50px;
+}
+
+.cta-button {
+    color: var(--green);
+    background-color: transparent;
+    border: 1px solid var(--green);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.75rem;
+    font-size: var(--fz-sm);
+    font-family: var(--font-mono);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 50px;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: var(--green-tint);
+    transform: translateY(-3px);
+}
+
+/* 섹션 공통 스타일 */
+.section {
+    padding: 100px 0;
+    max-width: 1000px;
+}
+
+.section-container {
+    width: 100%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 10px 0 40px;
+    width: 100%;
+    font-size: clamp(26px, 5vw, var(--fz-heading));
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--lightest-slate);
+}
+
+.section-number {
+    font-family: var(--font-mono);
+    font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
+    font-weight: 400;
+    color: var(--green);
+    margin-right: 10px;
+}
+
+.section-title {
+    position: relative;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: -5px;
+    width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: var(--lightest-navy);
+}
+
+.section-content {
+    position: relative;
+    padding-left: 0;
+}
+
+/* About 섹션 */
+.about-text {
+    max-width: 600px;
+}
+
+.about-text p {
+    margin: 0 0 15px;
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Personality 섹션 */
+.personality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.personality-item {
+    position: relative;
+}
+
+.personality-category {
+    font-size: var(--fz-xxl);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    margin-bottom: 20px;
+}
+
+.personality-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.personality-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 25px;
+}
+
+.personality-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: var(--fz-sm);
+    line-height: 12px;
+}
+
+.personality-label {
+    color: var(--lightest-slate);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.personality-list p,
+.personality-weakness p {
+    color: var(--slate);
+    font-size: var(--fz-sm);
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+.personality-weakness {
+    padding-left: 30px;
+    position: relative;
+}
+
+.personality-weakness::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: var(--fz-sm);
+    line-height: 12px;
+}
+
+.personality-weakness .personality-label {
+    color: var(--lightest-slate);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Philosophy 섹션 */
+.philosophy-content {
+    max-width: 700px;
+}
+
+.philosophy-quote {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    font-style: italic;
+    margin: 0 0 30px 0;
+    padding: 0;
+    border: none;
+    position: relative;
+    padding-left: 30px;
+}
+
+.philosophy-quote::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    font-size: 60px;
+    color: var(--green);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.philosophy-text {
+    color: var(--slate);
+    line-height: 1.6;
+    font-size: var(--fz-lg);
+}
+
+/* Experience 섹션 */
+.experience-timeline {
+    position: relative;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 50px;
+    border-left: 2px solid var(--lightest-navy);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--green);
+    border: 2px solid var(--navy);
+}
+
+.timeline-header {
+    margin-bottom: 10px;
+}
+
+.timeline-title {
+    font-size: var(--fz-xxl);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    margin-bottom: 5px;
+}
+
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    color: var(--green);
+}
+
+.timeline-content {
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+.timeline-content p {
+    margin-bottom: 15px;
+}
+
+.timeline-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Goals 섹션 */
+.goals-content {
+    max-width: 700px;
+}
+
+.goal-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.goal-item::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: var(--fz-sm);
+    line-height: 12px;
+}
+
+.goal-title {
+    font-size: var(--fz-xl);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    margin-bottom: 10px;
+}
+
+.goal-item p {
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+/* 푸터 */
+.footer {
+    padding: 60px 0 30px;
+    text-align: center;
+}
+
+.footer-content {
+    color: var(--slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+}
+
+/* 스크롤 애니메이션 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1080px) {
+    .main-content {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-nav {
+        display: none;
+    }
+
+    .main-content {
+        padding: 0 50px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-title::after {
+        width: 100px;
+    }
+
+    .personality-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .intro-description {
+        font-size: var(--fz-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 0 25px;
+    }
+
+    .intro-name {
+        font-size: 40px;
+    }
+
+    .intro-title {
+        font-size: 30px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+}
+
+/* 선택 텍스트 스타일 */
+::selection {
+    background-color: var(--green-tint);
+    color: var(--green);
+}
